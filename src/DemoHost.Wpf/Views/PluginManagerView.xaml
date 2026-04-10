@@ -1,0 +1,96 @@
+<UserControl x:Class="DemoHost.Wpf.Views.PluginManagerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Loaded="OnLoaded">
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <WrapPanel Grid.Row="0" Margin="0,0,0,8">
+            <Button Content="📂 Charger…"    Click="LoadPlugin_Click"/>
+            <Button Content="🔄 Recharger"   Click="ReloadPlugin_Click"/>
+            <Button Content="❌ Décharger"    Click="UnloadPlugin_Click"/>
+            <Button Content="🖼️ Afficher UI" Click="ShowUI_Click"/>
+            <Button Content="🔃 Rafraîchir"  Click="Refresh_Click"/>
+            <Button Content="🧹 Vider logs"  Click="ClearLogs_Click"/>
+        </WrapPanel>
+
+        <!-- Plugin list -->
+        <DataGrid Grid.Row="1" x:Name="PluginGrid"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  SelectionMode="Single" GridLinesVisibility="Horizontal">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nom" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Version" Binding="{Binding Version}" Width="60"/>
+                <DataGridTextColumn Header="Interface" Binding="{Binding InterfaceVersion}" Width="70"/>
+                <DataGridTextColumn Header="Capacités" Binding="{Binding Capabilities}" Width="120"/>
+                <DataGridTextColumn Header="Chargé" Binding="{Binding LoadTime, StringFormat='{}{0:HH:mm:ss}'}" Width="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Status -->
+        <TextBlock Grid.Row="2" x:Name="StatusText" Margin="0,4"
+                   FontSize="12" Foreground="Gray"/>
+
+        <!-- Notifications -->
+        <Border Grid.Row="3" x:Name="NotificationBanner" Visibility="Collapsed"
+                Margin="0,4" Padding="8" CornerRadius="4" Background="#FFF3CD">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="NotificationText" Grid.Column="0"
+                           TextWrapping="Wrap" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Content="✕" Click="DismissNotification_Click"
+                        Background="Transparent" BorderThickness="0" Padding="4,0"
+                        VerticalAlignment="Top"/>
+            </Grid>
+        </Border>
+
+        <!-- Logs -->
+        <Border Grid.Row="4" BorderBrush="LightGray" BorderThickness="1" Margin="0,4,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Filtre -->
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="4">
+                    <TextBlock Text="Filtre:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <ComboBox x:Name="LogFilterCombo" Width="120" SelectionChanged="LogFilter_Changed">
+                        <ComboBoxItem Content="Tous" IsSelected="True"/>
+                        <ComboBoxItem Content="Plugins seuls"/>
+                        <ComboBoxItem Content="Erreurs"/>
+                        <ComboBoxItem Content="Notifications"/>
+                    </ComboBox>
+                    <TextBlock Text=" Plugin:" VerticalAlignment="Center" Margin="8,0,4,0"/>
+                    <ComboBox x:Name="PluginFilterCombo" Width="140" SelectionChanged="LogFilter_Changed">
+                        <ComboBoxItem Content="Tous" IsSelected="True"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <!-- Contenu logs -->
+                <ScrollViewer Grid.Row="1" x:Name="LogScroller">
+                    <ItemsControl x:Name="LogList">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Display}" 
+                                           Foreground="{Binding Color}"
+                                           FontFamily="Cascadia Code,Consolas"
+                                           FontSize="11" TextWrapping="Wrap" Padding="2,1"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

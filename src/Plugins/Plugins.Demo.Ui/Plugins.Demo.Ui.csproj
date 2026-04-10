@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Copier le résultat dans le dossier Plugins de l'hôte -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>..\..\DemoHost.Wpf\bin\Debug\net8.0-windows\Plugins\Demo.Ui\</OutputPath>
+    <AssemblyName>Plugins.Demo.Ui.Plugin</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Référence UNIQUEMENT les contrats, jamais le Core ni l'hôte -->
+    <ProjectReference Include="..\..\PluginFramework.Contracts\PluginFramework.Contracts.csproj">
+      <Private>false</Private>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

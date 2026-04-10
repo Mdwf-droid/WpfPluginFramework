@@ -1,0 +1,166 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+
+# ═══════════════════════════════════════════════════════════
+#  Framework
+# ═══════════════════════════════════════════════════════════
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginFramework.Contracts", "src\PluginFramework.Contracts\PluginFramework.Contracts.csproj", "{A1B2C3D4-0001-0001-0001-000000000001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginFramework.Configuration", "src\PluginFramework.Configuration\PluginFramework.Configuration.csproj", "{A1B2C3D4-0002-0002-0002-000000000002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginFramework.Resilience", "src\PluginFramework.Resilience\PluginFramework.Resilience.csproj", "{A1B2C3D4-0003-0003-0003-000000000003}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginFramework.Services", "src\PluginFramework.Services\PluginFramework.Services.csproj", "{A1B2C3D4-0004-0004-0004-000000000004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginFramework.Core", "src\PluginFramework.Core\PluginFramework.Core.csproj", "{A1B2C3D4-0005-0005-0005-000000000005}"
+EndProject
+
+# ═══════════════════════════════════════════════════════════
+#  Application hôte
+# ═══════════════════════════════════════════════════════════
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoHost.Wpf", "src\DemoHost.Wpf\DemoHost.Wpf.csproj", "{A1B2C3D4-0006-0006-0006-000000000006}"
+EndProject
+
+# ═══════════════════════════════════════════════════════════
+#  Plugins de démo
+# ═══════════════════════════════════════════════════════════
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins.Demo.Ui", "src\Plugins\Plugins.Demo.Ui\Plugins.Demo.Ui.csproj", "{A1B2C3D4-0007-0007-0007-000000000007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins.Demo.Scheduler", "src\Plugins\Plugins.Demo.Scheduler\Plugins.Demo.Scheduler.csproj", "{A1B2C3D4-0008-0008-0008-000000000008}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins.Demo.Http", "src\Plugins\Plugins.Demo.Http\Plugins.Demo.Http.csproj", "{A1B2C3D4-0009-0009-0009-000000000009}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins.Demo.Full", "src\Plugins\Plugins.Demo.Full\Plugins.Demo.Full.csproj", "{A1B2C3D4-000A-000A-000A-00000000000A}"
+EndProject
+
+# ═══════════════════════════════════════════════════════════
+#  Tests
+# ═══════════════════════════════════════════════════════════
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PluginFramework.Tests", "tests\PluginFramework.Tests\PluginFramework.Tests.csproj", "{A1B2C3D4-000B-000B-000B-00000000000B}"
+EndProject
+
+# ═══════════════════════════════════════════════════════════
+#  Dossiers virtuels (Solution Folders)
+# ═══════════════════════════════════════════════════════════
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{F0000000-0000-0000-0000-000000000001}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{F0000000-0000-0000-0000-000000000002}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{F0000000-0000-0000-0000-000000000003}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F0000000-0000-0000-0000-000000000004}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F0000000-0000-0000-0000-000000000005}"
+	ProjectSection(SolutionItems) = preProject
+		appsettings.json = appsettings.json
+		README.md = README.md
+	EndProjectSection
+EndProject
+
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		# Framework
+		{A1B2C3D4-0001-0001-0001-000000000001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0001-0001-0001-000000000001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0001-0001-0001-000000000001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0001-0001-0001-000000000001}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{A1B2C3D4-0002-0002-0002-000000000002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0002-0002-0002-000000000002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0002-0002-0002-000000000002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0002-0002-0002-000000000002}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{A1B2C3D4-0003-0003-0003-000000000003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0003-0003-0003-000000000003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0003-0003-0003-000000000003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0003-0003-0003-000000000003}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{A1B2C3D4-0004-0004-0004-000000000004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0004-0004-0004-000000000004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0004-0004-0004-000000000004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0004-0004-0004-000000000004}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{A1B2C3D4-0005-0005-0005-000000000005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0005-0005-0005-000000000005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0005-0005-0005-000000000005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0005-0005-0005-000000000005}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		# Host
+		{A1B2C3D4-0006-0006-0006-000000000006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0006-0006-0006-000000000006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0006-0006-0006-000000000006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0006-0006-0006-000000000006}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		# Plugins
+		{A1B2C3D4-0007-0007-0007-000000000007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0007-0007-0007-000000000007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0007-0007-0007-000000000007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0007-0007-0007-000000000007}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{A1B2C3D4-0008-0008-0008-000000000008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0008-0008-0008-000000000008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0008-0008-0008-000000000008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0008-0008-0008-000000000008}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{A1B2C3D4-0009-0009-0009-000000000009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-0009-0009-0009-000000000009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-0009-0009-0009-000000000009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-0009-0009-0009-000000000009}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		{A1B2C3D4-000A-000A-000A-00000000000A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-000A-000A-000A-00000000000A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-000A-000A-000A-00000000000A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-000A-000A-000A-00000000000A}.Release|Any CPU.Build.0 = Release|Any CPU
+
+		# Tests
+		{A1B2C3D4-000B-000B-000B-00000000000B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B2C3D4-000B-000B-000B-00000000000B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B2C3D4-000B-000B-000B-00000000000B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B2C3D4-000B-000B-000B-00000000000B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+
+	# ═══════════════════════════════════════════════════════
+	#  Arborescence dans l'Explorateur de solutions
+	# ═══════════════════════════════════════════════════════
+
+	GlobalSection(NestedProjects) = preSolution
+		# Framework → dossier "Framework"
+		{A1B2C3D4-0001-0001-0001-000000000001} = {F0000000-0000-0000-0000-000000000001}
+		{A1B2C3D4-0002-0002-0002-000000000002} = {F0000000-0000-0000-0000-000000000001}
+		{A1B2C3D4-0003-0003-0003-000000000003} = {F0000000-0000-0000-0000-000000000001}
+		{A1B2C3D4-0004-0004-0004-000000000004} = {F0000000-0000-0000-0000-000000000001}
+		{A1B2C3D4-0005-0005-0005-000000000005} = {F0000000-0000-0000-0000-000000000001}
+
+		# Host → dossier "Host"
+		{A1B2C3D4-0006-0006-0006-000000000006} = {F0000000-0000-0000-0000-000000000002}
+
+		# Plugins → dossier "Plugins"
+		{A1B2C3D4-0007-0007-0007-000000000007} = {F0000000-0000-0000-0000-000000000003}
+		{A1B2C3D4-0008-0008-0008-000000000008} = {F0000000-0000-0000-0000-000000000003}
+		{A1B2C3D4-0009-0009-0009-000000000009} = {F0000000-0000-0000-0000-000000000003}
+		{A1B2C3D4-000A-000A-000A-00000000000A} = {F0000000-0000-0000-0000-000000000003}
+
+		# Tests → dossier "Tests"
+		{A1B2C3D4-000B-000B-000B-00000000000B} = {F0000000-0000-0000-0000-000000000004}
+	EndGlobalSection
+
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1F2A3B4-C5D6-7890-ABCD-EF1234567890}
+	EndGlobalSection
+EndGlobal
