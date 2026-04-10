@@ -7,6 +7,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PluginFramework.Configuration\PluginFramework.Configuration.csproj" />
+    <ProjectReference Include="..\PluginFramework.Contracts\PluginFramework.Contracts.csproj" />
     <ProjectReference Include="..\PluginFramework.Core\PluginFramework.Core.csproj" />
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
