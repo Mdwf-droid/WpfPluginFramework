@@ -1,23 +1,90 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- 1. PROPRIÉTÉS GÉNÉRALES                                -->
+	<!-- ═══════════════════════════════════════════════════════ -->
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\PluginFramework.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- 2. MÉTADONNÉES NUGET                                   -->
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<PropertyGroup>
+		<PackageId>PluginFramework.Core</PackageId>
+		<Version>2.0.1</Version>
+		<Authors>Benoît RONZANI</Authors>
+		<Description>Framework Core de plugins WPF — inclut Configuration, Contracts, Resilience et Services.</Description>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/Mdwf-droid/WpfPluginFramework</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Mdwf-droid/WpfPluginFramework</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>plugin;framework;wpf;dotnet;net8</PackageTags>
+		<!-- Ne pas inclure les symboles .pdb dans le package -->
+		<IncludeSymbols>false</IncludeSymbols>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- 3. INCLUSION DES DLL DES PROJETS RÉFÉRENCÉS            -->
+	<!--    (au lieu de les déclarer comme dépendances NuGet)    -->
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<PropertyGroup>
+		<TargetsForTfmSpecificBuildOutput>
+			$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage
+		</TargetsForTfmSpecificBuildOutput>
+	</PropertyGroup>
+
+	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="BuildOnlySettings;ResolveReferences">
+		<ItemGroup>
+			<BuildOutputInPackage
+			  Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget','ProjectReference'))" />
+		</ItemGroup>
+	</Target>
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- 4. RÉFÉRENCES PROJETS (PrivateAssets=all → DLL embarquées) -->
+	<!-- ═══════════════════════════════════════════════════════ -->
 	<ItemGroup>
-		<ProjectReference Include="..\PluginFramework.Contracts\PluginFramework.Contracts.csproj" />
-		<ProjectReference Include="..\PluginFramework.Configuration\PluginFramework.Configuration.csproj" />
-		<ProjectReference Include="..\PluginFramework.Services\PluginFramework.Services.csproj" />
-		<ProjectReference Include="..\PluginFramework.Resilience\PluginFramework.Resilience.csproj" />
-		<!-- ASP.NET Core pour WebApplication, MinimalAPI, etc. -->
+		<ProjectReference Include="..\PluginFramework.Contracts\PluginFramework.Contracts.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\PluginFramework.Configuration\PluginFramework.Configuration.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\PluginFramework.Services\PluginFramework.Services.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\PluginFramework.Resilience\PluginFramework.Resilience.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- 5. RÉFÉRENCES FRAMEWORK & PACKAGES TIERS               -->
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
-		<PackageReference Include="Quartz" Version="3.*" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.5" />
+		<PackageReference Include="Quartz" Version="3.*" />
 	</ItemGroup>
+
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<!-- 6. README INTÉGRÉ AU PACKAGE NUGET                     -->
+	<!-- ═══════════════════════════════════════════════════════ -->
+	<ItemGroup>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
 </Project>
