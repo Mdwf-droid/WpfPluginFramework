@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<SignAssembly>True</SignAssembly>
 		<PackageId>PluginFramework.Contracts</PackageId>
-		<Version>2.0.0</Version>
+		<Version>2.0.2</Version>
 		<Authors>Benoît RONZANI</Authors>
 		<Description>Interfaces et modèles partagés pour le framework de plugins</Description>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
