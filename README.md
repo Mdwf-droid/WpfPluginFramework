@@ -36,26 +36,16 @@ Framework extensible de gestion de plugins pour applications .NET, supportant le
 ## 🏛️ Architecture
 
 ```mermaid
-graph TB
-    subgraph Host["🖥️ DemoHost.Wpf"]
-        MW["MainWindow<br/>(TabControl)"]
-        PMV["PluginManager<br/>View"]
-        LP["Log Panel<br/>+ Notifs"]
-        subgraph Core["⚙️ AdvancedPluginManager"]
-            EB["EventBus"]
-            DB["Database"]
-            FW["FileWatcher"]
-        end
-        MW --- Core
-        PMV --- Core
-        LP --- Core
-    end
-    Core -->|"AssemblyLoadContext<br/>(isolé)"| PA
-    Core -->|"AssemblyLoadContext<br/>(isolé)"| PB
-    Core -->|"AssemblyLoadContext<br/>(isolé)"| PC
-    PA["🎨 Plugin A<br/>UI"]
-    PB["⏱️ Plugin B<br/>Scheduler"]
-    PC["🌐 Plugin C<br/>HTTP"]
+graph TD
+    MW[MainWindow - TabControl] --> APM[AdvancedPluginManager]
+    PMV[PluginManager View] --> APM
+    LP[Log Panel + Notifs] --> APM
+    APM --> EB[EventBus]
+    APM --> DB[Database]
+    APM --> FWW[FileWatcher]
+    APM -- AssemblyLoadContext --> PA[Plugin A - UI]
+    APM -- AssemblyLoadContext --> PB[Plugin B - Scheduler]
+    APM -- AssemblyLoadContext --> PC[Plugin C - HTTP]
 ```
 
 **Principes clés** :
@@ -461,17 +451,17 @@ subscription?.Dispose();
 
 ```mermaid
 flowchart TD
-    A["📂 Découverte DLL"] --> B["🔧 AssemblyLoadContext<br/>(chargement isolé)"]
-    B --> C["▶️ InitializeAsync()<br/>Injection IPluginHost"]
-    C --> D{"Capacités"}
-    D -->|UI| E["🎨 CreateView()"]
-    D -->|Scheduled| F["⏱️ GetTriggers()"]
-    D -->|HTTP| G["🌐 ConfigureEndpoints()"]
-    E --> H["✅ En fonctionnement<br/>Logs · Notifs · Events"]
+    A[Decouverte DLL] --> B[AssemblyLoadContext - chargement isole]
+    B --> C[InitializeAsync - Injection IPluginHost]
+    C --> D{Capacites}
+    D -- UI --> E[CreateView]
+    D -- Scheduled --> F[GetTriggers]
+    D -- HTTP --> G[ConfigureEndpoints]
+    E --> H[En fonctionnement - Logs Notifs Events]
     F --> H
     G --> H
-    H --> I["⏹️ ShutdownAsync()"]
-    I --> J["♻️ Unload Context<br/>Libération mémoire"]
+    H --> I[ShutdownAsync]
+    I --> J[Unload Context - Liberation memoire]
 ```
 
 | Événement | Déclencheur |
@@ -730,6 +720,3 @@ Le `FileSystemWatcher` détecte automatiquement les modifications de DLL dans le
 4. Le host détecte la modification et recharge automatiquement
 
 > ⚠️ Sous Windows, le fichier peut être verrouillé. Le framework gère les retries automatiques.
-
----
-
